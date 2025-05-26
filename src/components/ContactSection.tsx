@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -52,7 +51,7 @@ export const ContactSection = () => {
                     placeholder="Escribe tu mensaje aquí..."
                   ></textarea>
                 </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button className="w-full bg-green-600 hover:bg-green-700">
                   Enviar Mensaje
                 </Button>
               </CardContent>
@@ -63,7 +62,7 @@ export const ContactSection = () => {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <MapPin className="w-6 h-6 text-blue-600 mt-1" />
+                  <MapPin className="w-6 h-6 text-green-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Dirección</h3>
                     <p className="text-gray-600">
@@ -78,7 +77,7 @@ export const ContactSection = () => {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <Phone className="w-6 h-6 text-blue-600 mt-1" />
+                  <Phone className="w-6 h-6 text-green-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Teléfono</h3>
                     <p className="text-gray-600">+34 123 456 789</p>
@@ -90,7 +89,7 @@ export const ContactSection = () => {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <Mail className="w-6 h-6 text-blue-600 mt-1" />
+                  <Mail className="w-6 h-6 text-green-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                     <p className="text-gray-600">info@cooperativaeducadores.coop</p>
@@ -102,7 +101,7 @@ export const ContactSection = () => {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <Clock className="w-6 h-6 text-blue-600 mt-1" />
+                  <Clock className="w-6 h-6 text-green-600 mt-1" />
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Horario de Atención</h3>
                     <p className="text-gray-600">

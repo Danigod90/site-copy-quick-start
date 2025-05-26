@@ -46,7 +46,7 @@ export const BenefitsSection = () => {
           </div>
 
           <div>
-            <Card className="bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+            <Card className="bg-gradient-to-br from-green-600 to-green-800 text-white">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6 text-center">
                   Cifras que nos Respaldan
@@ -59,7 +59,7 @@ export const BenefitsSection = () => {
                       </div>
                       <div>
                         <div className="text-3xl font-bold text-yellow-300">{stat.number}</div>
-                        <div className="text-blue-100">{stat.label}</div>
+                        <div className="text-green-100">{stat.label}</div>
                       </div>
                     </div>
                   ))}

@@ -1,4 +1,3 @@
-
 import { Separator } from "@/components/ui/separator";
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
@@ -10,7 +9,7 @@ export const Footer = () => {
           {/* Logo y descripción */}
           <div>
             <div className="flex items-center mb-4">
-              <div className="bg-blue-600 text-white p-3 rounded-lg mr-3">
+              <div className="bg-green-600 text-white p-3 rounded-lg mr-3">
                 <span className="text-xl font-bold">CE</span>
               </div>
               <div>
@@ -23,10 +22,10 @@ export const Footer = () => {
               de los educadores. Juntos construimos un futuro mejor.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="w-5 h-5 text-gray-400 hover:text-blue-500 cursor-pointer" />
-              <Twitter className="w-5 h-5 text-gray-400 hover:text-blue-500 cursor-pointer" />
-              <Instagram className="w-5 h-5 text-gray-400 hover:text-blue-500 cursor-pointer" />
-              <Linkedin className="w-5 h-5 text-gray-400 hover:text-blue-500 cursor-pointer" />
+              <Facebook className="w-5 h-5 text-gray-400 hover:text-green-500 cursor-pointer" />
+              <Twitter className="w-5 h-5 text-gray-400 hover:text-green-500 cursor-pointer" />
+              <Instagram className="w-5 h-5 text-gray-400 hover:text-green-500 cursor-pointer" />
+              <Linkedin className="w-5 h-5 text-gray-400 hover:text-green-500 cursor-pointer" />
             </div>
           </div>
 
