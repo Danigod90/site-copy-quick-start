@@ -2,10 +2,48 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Users, Heart, Shield } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export const HeroSection = () => {
+  const heroServices = [
+    {
+      icon: GraduationCap,
+      title: "Formación Continua",
+      description: "Programas de desarrollo profesional",
+      bgColor: "from-purple-500 to-purple-600"
+    },
+    {
+      icon: Users,
+      title: "Comunidad",
+      description: "Red de educadores comprometidos",
+      bgColor: "from-green-500 to-green-600"
+    },
+    {
+      icon: Heart,
+      title: "Bienestar",
+      description: "Servicios de salud y bienestar",
+      bgColor: "from-red-500 to-red-600"
+    },
+    {
+      icon: Shield,
+      title: "Protección",
+      description: "Seguridad social y legal",
+      bgColor: "from-blue-500 to-blue-600"
+    }
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroServices.length);
+    }, 4000); // Cambia cada 4 segundos
+
+    return () => clearInterval(interval);
+  }, [heroServices.length]);
+
   return (
-    <section id="inicio" className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
+    <section id="inicio" className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -26,38 +64,50 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
-                <GraduationCap className="w-12 h-12 mx-auto mb-3 text-yellow-300" />
-                <h3 className="font-semibold mb-2">Formación Continua</h3>
-                <p className="text-sm text-green-100">Programas de desarrollo profesional</p>
-              </CardContent>
-            </Card>
+          {/* Carrusel de servicios hero */}
+          <div className="relative">
+            <div className="relative h-80 mb-8">
+              <div 
+                className="flex transition-transform duration-1000 ease-in-out"
+                style={{ 
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                  width: `${heroServices.length * 100}%`
+                }}
+              >
+                {heroServices.map((service, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex-shrink-0 px-2"
+                    style={{ width: `${100 / heroServices.length}%` }}
+                  >
+                    <Card className="h-72 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300">
+                      <CardContent className="p-8 text-center h-full flex flex-col justify-center">
+                        <div className={`bg-gradient-to-br ${service.bgColor} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl`}>
+                          <service.icon className="w-10 h-10 text-white" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
+                        <p className="text-green-100 leading-relaxed">{service.description}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
-                <Users className="w-12 h-12 mx-auto mb-3 text-yellow-300" />
-                <h3 className="font-semibold mb-2">Comunidad</h3>
-                <p className="text-sm text-green-100">Red de educadores comprometidos</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
-                <Heart className="w-12 h-12 mx-auto mb-3 text-yellow-300" />
-                <h3 className="font-semibold mb-2">Bienestar</h3>
-                <p className="text-sm text-green-100">Servicios de salud y bienestar</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-6 text-center">
-                <Shield className="w-12 h-12 mx-auto mb-3 text-yellow-300" />
-                <h3 className="font-semibold mb-2">Protección</h3>
-                <p className="text-sm text-green-100">Seguridad social y legal</p>
-              </CardContent>
-            </Card>
+            {/* Indicadores del carrusel */}
+            <div className="flex justify-center space-x-3">
+              {heroServices.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                    currentIndex === index 
+                      ? 'bg-yellow-400 scale-125 shadow-lg' 
+                      : 'bg-white/40 hover:bg-white/60'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

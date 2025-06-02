@@ -10,11 +10,13 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <HeroSection />
-      <ServicesSection />
-      <BenefitsSection />
-      <ContactSection />
-      <Footer />
+      <div className="pt-24"> {/* Compensación para el header fijo */}
+        <HeroSection />
+        <ServicesSection />
+        <BenefitsSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 };
