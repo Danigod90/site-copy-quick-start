@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, CreditCard, Home, Car, Stethoscope, Calculator } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export const ServicesSection = () => {
   const services = [
@@ -21,7 +22,7 @@ export const ServicesSection = () => {
     },
     {
       icon: BookOpen,
-      title: "Educación Continua",
+      title: "Formación Continua",
       description: "Cursos, diplomados, especializaciones y programas de formación profesional permanente."
     },
     {
@@ -36,8 +37,18 @@ export const ServicesSection = () => {
     }
   ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+    }, 3000); // Cambia cada 3 segundos
+
+    return () => clearInterval(interval);
+  }, [services.length]);
+
   return (
-    <section id="servicios" className="py-20 bg-gray-50">
+    <section id="servicios" className="py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -49,17 +60,64 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Carrusel automático */}
+        <div className="relative h-96 mb-12">
+          <div 
+            className="flex transition-transform duration-1000 ease-in-out"
+            style={{ 
+              transform: `translateX(-${currentIndex * 100}%)`,
+              width: `${services.length * 100}%`
+            }}
+          >
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="w-full flex-shrink-0 px-4"
+                style={{ width: `${100 / services.length}%` }}
+              >
+                <Card className="h-80 hover:shadow-lg transition-shadow duration-300 bg-gradient-to-br from-green-50 to-yellow-50 border-green-200">
+                  <CardHeader className="text-center">
+                    <div className="bg-gradient-to-br from-green-500 to-green-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <service.icon className="w-10 h-10 text-yellow-200" />
+                    </div>
+                    <CardTitle className="text-2xl text-green-800 font-bold">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-8">
+                    <p className="text-gray-700 text-center leading-relaxed">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Indicadores */}
+        <div className="flex justify-center space-x-2 mb-8">
+          {services.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                currentIndex === index 
+                  ? 'bg-green-600 scale-125' 
+                  : 'bg-green-300 hover:bg-green-400'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Grid de servicios (versión estática para pantallas grandes) */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+            <Card key={index} className="hover:shadow-lg transition-shadow duration-300 bg-gradient-to-br from-green-50 to-yellow-50 border-green-200">
               <CardHeader className="text-center">
-                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <service.icon className="w-8 h-8 text-green-600" />
+                <div className="bg-gradient-to-br from-green-500 to-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <service.icon className="w-8 h-8 text-yellow-200" />
                 </div>
-                <CardTitle className="text-xl text-gray-900">{service.title}</CardTitle>
+                <CardTitle className="text-xl text-green-800">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 text-center">{service.description}</p>
+                <p className="text-gray-700 text-center">{service.description}</p>
               </CardContent>
             </Card>
           ))}
