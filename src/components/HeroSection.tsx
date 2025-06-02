@@ -71,26 +71,22 @@ export const HeroSection = () => {
                 className="flex transition-transform duration-1000 ease-in-out"
                 style={{ 
                   transform: `translateX(-${currentIndex * 100}%)`,
-                  width: `${heroServices.length * 100}%`
                 }}
               >
                 {heroServices.map((service, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0"
-                    style={{ width: `${100 / heroServices.length}%` }}
+                    className="w-full flex-shrink-0 px-2"
                   >
-                    <div className="px-2">
-                      <Card className="h-72 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300">
-                        <CardContent className="p-8 text-center h-full flex flex-col justify-center">
-                          <div className={`bg-gradient-to-br ${service.bgColor} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl`}>
-                            <service.icon className="w-10 h-10 text-white" />
-                          </div>
-                          <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
-                          <p className="text-green-100 leading-relaxed">{service.description}</p>
-                        </CardContent>
-                      </Card>
-                    </div>
+                    <Card className="h-72 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300">
+                      <CardContent className="p-8 text-center h-full flex flex-col justify-center">
+                        <div className={`bg-gradient-to-br ${service.bgColor} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl`}>
+                          <service.icon className="w-10 h-10 text-white" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
+                        <p className="text-green-100 leading-relaxed">{service.description}</p>
+                      </CardContent>
+                    </Card>
                   </div>
                 ))}
               </div>
