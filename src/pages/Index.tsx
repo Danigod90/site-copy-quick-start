@@ -10,37 +10,37 @@ import { FloatingButtons } from "@/components/FloatingButtons";
 const Index = () => {
   return (
     <div className="min-h-screen relative">
-      {/* Fondo fijo con imagen del logo CACEC - Efecto Parallax */}
-      <div className="fixed inset-0 -z-10">
-        {/* Fondo blanco base */}
+      {/* Fondo fijo que NO se mueve - Efecto Parallax verdadero */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        {/* Fondo blanco sólido */}
         <div className="absolute inset-0 bg-white"></div>
-        {/* Logo como marca de agua con mayor visibilidad */}
+        
+        {/* Imagen CACEC posicionada a la derecha, tamaño mediano */}
         <div 
-          className="absolute inset-0 opacity-20"
+          className="absolute right-10 top-1/2 transform -translate-y-1/2 w-80 h-80 opacity-15"
           style={{
             backgroundImage: `url('/lovable-uploads/715d562c-849f-4024-887f-d1f6708f0555.png')`,
-            backgroundSize: '600px 600px',
-            backgroundPosition: 'center center',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-            filter: 'grayscale(100%) brightness(1.2) contrast(0.4)'
+            filter: 'grayscale(100%) brightness(0.8) contrast(0.6)'
           }}
         ></div>
-        {/* Patrón repetido más sutil */}
+        
+        {/* Patrón sutil repetido en toda la página */}
         <div 
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-3"
           style={{
             backgroundImage: `url('/lovable-uploads/715d562c-849f-4024-887f-d1f6708f0555.png')`,
-            backgroundSize: '200px 200px',
+            backgroundSize: '150px 150px',
             backgroundRepeat: 'repeat',
-            backgroundAttachment: 'fixed',
             filter: 'grayscale(100%) brightness(1.5) contrast(0.2)'
           }}
         ></div>
       </div>
       
-      {/* Contenido que se desplaza con fondo semi-transparente */}
-      <div className="relative z-10 bg-white/85 backdrop-blur-[2px]">
+      {/* Contenido que se desplaza sobre el fondo fijo */}
+      <div className="relative z-10 bg-white/75 backdrop-blur-[1px] min-h-screen">
         <Header />
         <div className="pt-24">
           <HeroSection />
