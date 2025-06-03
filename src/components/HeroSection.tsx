@@ -1,34 +1,29 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { GraduationCap, Users, Heart, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const HeroSection = () => {
-  const heroServices = [
+  const heroImages = [
     {
-      icon: GraduationCap,
-      title: "Formación Continua",
-      description: "Programas de desarrollo profesional",
-      bgColor: "from-purple-500 to-purple-600"
+      src: "/lovable-uploads/cb428654-c98d-4dfb-b0e0-4e8e9437b365.png",
+      title: "Aumenta la línea de tu tarjeta de crédito",
+      description: "Universitaria premia a los socios que cumplen"
     },
     {
-      icon: Users,
-      title: "Comunidad",
-      description: "Red de educadores comprometidos",
-      bgColor: "from-green-500 to-green-600"
+      src: "/lovable-uploads/892c3922-522a-4381-bf44-2177c55318f2.png",
+      title: "Asociarte ahora es más simple",
+      description: "Únete a nuestra comunidad de educadores"
     },
     {
-      icon: Heart,
-      title: "Bienestar",
-      description: "Servicios de salud y bienestar",
-      bgColor: "from-red-500 to-red-600"
+      src: "/lovable-uploads/2be97ef8-309b-42fe-a4f7-ba75ad01301d.png",
+      title: "Referencias a entidades",
+      description: "Impulsamos tu crecimiento profesional"
     },
     {
-      icon: Shield,
-      title: "Protección",
-      description: "Seguridad social y legal",
-      bgColor: "from-blue-500 to-blue-600"
+      src: "/lovable-uploads/51c09164-df6b-46b4-a2e7-94fdea2362a6.png",
+      title: "Sorteo de Reyes 2025",
+      description: "Lista de Ganadores disponible"
     }
   ];
 
@@ -36,11 +31,11 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroServices.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [heroServices.length]);
+  }, [heroImages.length]);
 
   return (
     <section id="inicio" className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20 overflow-hidden">
@@ -64,27 +59,31 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Carrusel de servicios hero */}
+          {/* Carrusel de imágenes hero */}
           <div className="relative">
-            <div className="relative h-80 mb-8 overflow-hidden">
+            <div className="relative h-80 mb-8 overflow-hidden rounded-lg">
               <div 
                 className="flex transition-transform duration-1000 ease-in-out"
                 style={{ 
                   transform: `translateX(-${currentIndex * 100}%)`,
                 }}
               >
-                {heroServices.map((service, index) => (
+                {heroImages.map((image, index) => (
                   <div
                     key={index}
                     className="w-full flex-shrink-0 px-2"
                   >
-                    <Card className="h-72 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300">
-                      <CardContent className="p-8 text-center h-full flex flex-col justify-center">
-                        <div className={`bg-gradient-to-br ${service.bgColor} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl`}>
-                          <service.icon className="w-10 h-10 text-white" />
+                    <Card className="h-72 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 overflow-hidden">
+                      <CardContent className="p-0 h-full relative">
+                        <img 
+                          src={image.src} 
+                          alt={image.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                          <h3 className="text-xl font-bold mb-2 text-white">{image.title}</h3>
+                          <p className="text-green-100 text-sm">{image.description}</p>
                         </div>
-                        <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
-                        <p className="text-green-100 leading-relaxed">{service.description}</p>
                       </CardContent>
                     </Card>
                   </div>
@@ -94,7 +93,7 @@ export const HeroSection = () => {
 
             {/* Indicadores del carrusel */}
             <div className="flex justify-center space-x-3">
-              {heroServices.map((_, index) => (
+              {heroImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}

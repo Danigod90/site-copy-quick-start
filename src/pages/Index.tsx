@@ -39,8 +39,8 @@ const Index = () => {
         ></div>
       </div>
       
-      {/* Contenido que se desplaza sobre el fondo fijo */}
-      <div className="relative z-10 bg-white/75 backdrop-blur-[1px] min-h-screen">
+      {/* Contenido que se desplaza sobre el fondo fijo con márgenes laterales */}
+      <div className="relative z-10 bg-white/75 backdrop-blur-[1px] min-h-screen mx-8 lg:mx-16 xl:mx-24">
         <Header />
         <div className="pt-24">
           <HeroSection />
