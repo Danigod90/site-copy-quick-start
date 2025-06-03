@@ -9,15 +9,22 @@ import { FloatingButtons } from "@/components/FloatingButtons";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <div className="pt-24">
-        <HeroSection />
-        <ServicesSection />
-        <BenefitsSection />
-        <ContactSection />
-        <Footer />
+    <div className="min-h-screen relative">
+      {/* Fondo fijo blanco */}
+      <div className="fixed inset-0 bg-white -z-10"></div>
+      
+      {/* Contenido que se desplaza */}
+      <div className="relative z-10">
+        <Header />
+        <div className="pt-24">
+          <HeroSection />
+          <ServicesSection />
+          <BenefitsSection />
+          <ContactSection />
+          <Footer />
+        </div>
       </div>
+      
       <FloatingButtons />
     </div>
   );
